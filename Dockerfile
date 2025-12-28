@@ -1,11 +1,14 @@
 # Use a lightweight Python image
 FROM python:3.9-slim
 
-# Install Inkscape (Essential for CDR conversion)
-# We also install fonts to ensure text renders somewhat correctly
+# Install Inkscape and a comprehensive set of fonts
+# fonts-dejavu, fonts-noto, and ghostscript help with missing elements and rendering text
 RUN apt-get update && apt-get install -y \
     inkscape \
     fonts-liberation \
+    fonts-dejavu \
+    fonts-noto \
+    ghostscript \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
