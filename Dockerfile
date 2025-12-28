@@ -22,4 +22,5 @@ COPY . .
 EXPOSE 5000
 
 # Command to run the app using Gunicorn (Production server)
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--timeout", "120", "app:app"]
+# UPDATED: We use --workers 1 to save RAM on free tier hosting
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "1", "--threads", "8", "--timeout", "120", "app:app"]
